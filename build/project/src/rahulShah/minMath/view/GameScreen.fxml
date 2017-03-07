@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rahulShah.minMath.view.GameScreenController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <TextField fx:id="answerField" alignment="CENTER" layoutX="150.0" layoutY="131.0" prefHeight="77.0" prefWidth="700.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </TextField>
+            <Label fx:id="questionField" alignment="CENTER" layoutX="150.0" layoutY="45.0" prefHeight="70.0" prefWidth="700.0" textAlignment="CENTER">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonNumber1" alignment="CENTER" layoutX="383.0" layoutY="298.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="1" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber2" alignment="CENTER" layoutX="463.0" layoutY="298.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="2" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber3" alignment="CENTER" layoutX="543.0" layoutY="298.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="3" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber6" alignment="CENTER" layoutX="543.0" layoutY="378.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="6" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber5" alignment="CENTER" layoutX="463.0" layoutY="378.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="5" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber4" alignment="CENTER" layoutX="383.0" layoutY="378.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="4" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber7" alignment="CENTER" layoutX="383.0" layoutY="458.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="7" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber8" alignment="CENTER" layoutX="463.0" layoutY="458.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="8" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber9" alignment="CENTER" layoutX="543.0" layoutY="458.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="9" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonNumber0" alignment="CENTER" layoutX="463.0" layoutY="538.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="0" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPosNeg" alignment="CENTER" layoutX="383.0" layoutY="538.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="+/-" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonDecimal" alignment="CENTER" layoutX="543.0" layoutY="538.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#changeDecPoint" prefHeight="75.0" prefWidth="75.0" text="." textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="submitAns" layoutX="397.0" layoutY="651.0" mnemonicParsing="false" onAction="#submitAnswerForCorrection" text="Submit">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Button>
+            <Label fx:id="timerLabel" alignment="CENTER" layoutX="18.0" layoutY="63.0" prefHeight="35.0" prefWidth="75.0" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="29.0" layoutY="14.0" text="Time" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="900.0" layoutY="14.0" text="Score" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreLabel" alignment="CENTER" layoutX="892.0" layoutY="63.0" prefHeight="35.0" prefWidth="75.0" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="clearButton" layoutX="623.0" layoutY="310.0" mnemonicParsing="false" onAction="#clearAnswerField" text="Clear">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="playAgainButton" layoutX="734.0" layoutY="664.0" mnemonicParsing="false" onAction="#playGameAgain" text="Play Again!">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonForwardSlash" alignment="CENTER" layoutX="623.0" layoutY="378.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#numberButtonPressed" prefHeight="75.0" prefWidth="75.0" text="/" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

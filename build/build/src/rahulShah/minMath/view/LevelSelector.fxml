@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rahulShah.minMath.view.LevelSelectorController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <Button fx:id="selectAddition" layoutX="14.0" layoutY="25.0" maxHeight="80.0" maxWidth="270.0" minHeight="80.0" minWidth="270.0" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Addition">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectSubtraction" layoutX="365.0" layoutY="25.0" maxHeight="80.0" maxWidth="270.0" minHeight="80.0" minWidth="270.0" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Subtraction">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectExponent" layoutX="365.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Exponents">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectAddFraction" layoutX="718.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Add Fraction">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectMultiplication" layoutX="719.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Multiplication">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectDivision" layoutX="14.0" layoutY="134.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Division">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectSubtractFraction" ellipsisString="" layoutX="13.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Subtract Fraction">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Slider fx:id="levelSelector" blockIncrement="1.0" layoutX="245.0" layoutY="505.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="155.0" prefWidth="512.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Button fx:id="playGame" layoutX="431.0" layoutY="689.0" mnemonicParsing="false" onAction="#startTheGame" text="PLAY!">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Label fx:id="chooseLevelLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="244.0" layoutY="378.0" prefHeight="45.0" prefWidth="512.0" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="408.0" layoutY="505.0" text="Choose the level:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="25.0" layoutY="728.0" mnemonicParsing="false" onAction="#goBack" text="BACK">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
