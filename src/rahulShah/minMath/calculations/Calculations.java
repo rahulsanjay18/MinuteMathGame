@@ -3,6 +3,8 @@ package rahulShah.minMath.calculations;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import rahulShah.minMath.view.Level;
+
 public class Calculations {
 	private static char[] superScriptArray = {'\u2070', '\u00b9', '\u00b2', '\u00b3', '\u2074', '\u2075', '\u2076', '\u2077', '\u2078', '\u2079'}; // Super Scripts used for displaying exponents
 

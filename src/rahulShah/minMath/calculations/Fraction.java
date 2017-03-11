@@ -3,6 +3,8 @@ package rahulShah.minMath.calculations;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import rahulShah.minMath.view.Level;
+
 public class Fraction {
 	private int numerator;		// numerator of fraction
 	private int denominator;	// denominator of fraction

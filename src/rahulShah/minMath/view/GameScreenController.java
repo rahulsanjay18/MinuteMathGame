@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import rahulShah.minMath.calculations.Calculations;
-import rahulShah.minMath.calculations.Level;
 
 public class GameScreenController {
 
