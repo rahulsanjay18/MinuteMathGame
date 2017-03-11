@@ -1,4 +1,4 @@
-package rahulShah.minMath.calculations;
+package rahulShah.minMath.view;
 
 public class Level {
 	
