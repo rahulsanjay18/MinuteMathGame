@@ -3,7 +3,7 @@ package rahulShah.minMath.calculations;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import rahulShah.minMath.view.Level;
+import gameLogic.Level;
 
 public class Fraction {
 	private int numerator;		// numerator of fraction

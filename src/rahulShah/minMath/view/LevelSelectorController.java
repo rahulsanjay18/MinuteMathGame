@@ -2,6 +2,8 @@ package rahulShah.minMath.view;
 
 import java.io.IOException;
 
+import gameLogic.Game;
+import gameLogic.Level;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

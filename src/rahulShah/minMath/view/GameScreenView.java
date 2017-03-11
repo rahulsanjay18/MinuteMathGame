@@ -1,5 +1,6 @@
 package rahulShah.minMath.view;
 
+import gameLogic.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,6 @@
-package rahulShah.minMath.view;
+package gameLogic;
+
+import rahulShah.minMath.view.GameScreenView;
 
 public class Game {
 	private GameScreenView gameScreenView;
