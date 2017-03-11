@@ -85,9 +85,11 @@ public class LevelSelectorController {
 			Stage stage = (Stage) playGame.getScene().getWindow();
 			stage.setOpacity(1);
 			stage.setScene(new Scene(parent, 1000, 800));
-			GameScreenController controller = root.<GameScreenController>getController();
+			GameScreenView controller = root.<GameScreenView>getController();
 			
-			controller.initialize(new Level((int)levelSelector.getValue(), nameButtonSelected));	// initializes controller by sending the level object to the GameScreenController
+			Game currentGame = new Game(controller, new Level((int)levelSelector.getValue(), nameButtonSelected));
+			
+			currentGame.getGameScreenView().initialize(currentGame);	// initializes controller by sending the Game object to the GameScreenController
 			
 			stage.setResizable(false);
 			stage.show();

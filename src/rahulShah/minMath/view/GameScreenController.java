@@ -10,64 +10,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import rahulShah.minMath.calculations.Calculations;
 
 public class GameScreenController {
 
-	/*---------------------------View Instance Variables--------------------------*/
-	// Declare objects for various elements in the view
-	@FXML
-	private Button buttonNumber1;			
-	@FXML
-	private Button buttonNumber2;			
-	@FXML
-	private Button buttonNumber3;			
-	@FXML
-	private Button buttonNumber4;			
-	@FXML
-	private Button buttonNumber5;			
-	@FXML
-	private Button buttonNumber6;			
-	@FXML
-	private Button buttonNumber7;			
-	@FXML
-	private Button buttonNumber8;			
-	@FXML
-	private Button buttonNumber9;			
-	@FXML
-	private Button buttonNumber0;			
-	@FXML
-	private Button buttonDecimal;			
-	@FXML
-	private Button buttonPosNeg;			
-	@FXML
-	private Button buttonForwardSlash;		
-	@FXML
-	private Button submitAns;				
-	@FXML
-	private TextField answerField;			
-	@FXML
-	private Label questionField;
-	@FXML
-	private Label scoreLabel;
-	@FXML
-	private Label timerLabel;
-	@FXML
-	private Button clearButton;
-	@FXML
-	private Button playAgainButton;
+	private static String currentAnswerField = "";
 	
-	/*----------------------------------------------------------------------------*/
-
+	private static Game currentGame;
+	
 	private static Timer timer;					// Timer used to run the game
 
 	private static TimerTask timerTask;			// method/function that operates the timer
@@ -77,8 +28,6 @@ public class GameScreenController {
 	private static boolean isItDecimal = false;	// determines if it is in decimal mode
 
 	private static boolean isNewNumber = true;	// determines if a new number is being entered
-
-	private static Level levelOfGame;			// level of game being played
 
 	private static double existingNum = 0;		// the number that exists in the system
 
@@ -95,10 +44,9 @@ public class GameScreenController {
 	 * Begins the game, including starting timer and getting the level from the Level Selector class
 	 * @param level determines the difficulty and the type of problems in this game
 	 */
-	public void initialize(Level level) {
-		levelOfGame = level;
-		playAgainButton.setVisible(false);
-		playAgainButton.setDisable(true);
+	public void initialize(Game game) {
+		
+		currentGame = game;
 		
 		// sets a timer task for 60 seconds, updating the label every second
 		timerTask  = new TimerTask() {
@@ -109,7 +57,7 @@ public class GameScreenController {
 			public void run() {
 				Platform.runLater(() -> {
 					seconds++;
-					timerLabel.setText("" + (60 - seconds));
+					game.getGameScreenView().updateTimer(60 - seconds);
 					if (seconds >= maxTimes) {
 						System.out.println("ended");
 						this.cancel();
@@ -122,38 +70,34 @@ public class GameScreenController {
 		timer = new Timer(true);
 		
 		// Executes the game
-		questionField.setText(Calculations.genQuestion(levelOfGame));
+		currentGame.getGameScreenView().displayQuestion(Calculations.genQuestion(currentGame.getCurrentLevel()));
 		timer.schedule(timerTask, 0, 1000);
 	}
 
-	@FXML
-	public void numberButtonPressed(ActionEvent event){
-		Button buttonSelected = (Button)event.getSource();	// determines which button was selected
-		String output;										// holds the next state of the answer field
-
-
+	public static void processInput(String buttonName){
+		
 		// determines the type of output needed, processes input accordingly, and formats it to fit with the level name
-		if(buttonSelected.getText().equals("/")){
+		if(buttonName.equals("/")){
 
 			isNewNumber = false;
 			hasBeenFrac = true;
-			output = answerField.getText() + "/";
+			currentAnswerField += "/";
 
 		}else if(isNewNumber && hasBeenFrac){
-			output = holdFrac + inputString(event, buttonSelected.getText());
+			currentAnswerField = holdFrac + inputString(buttonName);
 
 		}else if (isNewNumber) {
 			
-			output = inputString(event, buttonSelected.getText());
+			currentAnswerField = inputString(buttonName);
 			
 		}else{
-			holdFrac = answerField.getText();
-			output = holdFrac + inputString(event, buttonSelected.getText());
+			holdFrac = currentAnswerField;
+			currentAnswerField += inputString(buttonName);
 			isNewNumber = true;
 		}
 
 		// sets the answer test with the right input
-		answerField.setText(output);
+		currentGame.getGameScreenView().updateAnswer(currentAnswerField);
 	}
 	
 	/**
@@ -162,9 +106,9 @@ public class GameScreenController {
 	 * @param buttonName the name of the button needed
 	 * @return the string of that part of the answer field
 	 */
-	private String inputString(ActionEvent event, String buttonName) {
+	private static String inputString(String buttonName) {
 		
-		String answerString = (answerField.getText().isEmpty()) ? "0" : answerField.getText();
+		String answerString = (currentAnswerField.isEmpty()) ? "0" : currentAnswerField;
 		
 		// checks if the answer is in the format of the denominator of fraction, or if it is a normal integer, and updates the existing number
 		if(answerString.contains("/") && answerString.substring(answerString.indexOf("/") + 1).isEmpty()){
@@ -203,46 +147,34 @@ public class GameScreenController {
 	/**
 	 * Switches the state of isItDecimal
 	 */
-	@FXML
-	public void changeDecPoint(){
-		isItDecimal = (isItDecimal) ? false : true;
+	public static void flipDecBool(){
+		isItDecimal = !isItDecimal;
 	}
 
 	/**
 	 * sends answer to be corrected
 	 */
 	@FXML
-	public void submitAnswerForCorrection(){
-		String question = questionField.getText();	// question portion of the problem
-		String finalAnswer = answerField.getText();	// answer portion of the problem
+	public static void submitAnswer(){
+		String question = currentGame.getGameScreenView().getQuestion();	// question portion of the problem
+		String finalAnswer = currentAnswerField;	// answer portion of the problem
 		
 		// updates score if answer is correct
-		if(Calculations.checkAnswer(levelOfGame, finalAnswer, question)){
+		if(Calculations.checkAnswer(currentGame.getCurrentLevel(), finalAnswer, question)){
 			score++;
-			updateScore(score);
-			clearAnswerField();
-			questionField.setText(Calculations.genQuestion(levelOfGame));
+			currentGame.getGameScreenView().updateScore(score);
+			currentGame.getGameScreenView().clearAnswerField();
+			currentGame.getGameScreenView().displayQuestion(Calculations.genQuestion(currentGame.getCurrentLevel()));
 		}
 	}
 
-	/**
-	 * Resets the static variables and the answer field to ready for the next problem
-	 */
-	@FXML
-	public void clearAnswerField(){
-		answerField.clear();
+
+	public static void clearAnswer(){
 		isItDecimal = false;
 		negPowerOfTen = 0;
+		currentAnswerField = "";
 		isNewNumber = true;
 		hasBeenFrac = false;
-	}
-
-	/**
-	 * updates score
-	 * @param score the new score to be updated
-	 */
-	private void updateScore(int score) {
-		scoreLabel.setText("" + score);
 	}
 
 	/**
@@ -266,7 +198,7 @@ public class GameScreenController {
 	 * @param existingNum the number that exists as the current answer
 	 * @return the transformed number with the input added to the end
 	 */
-	private BigDecimal decimalPoint(int numberInput, double existingNum) {
+	private static BigDecimal decimalPoint(int numberInput, double existingNum) {
 		negPowerOfTen--;
 		
 		BigDecimal existBigDec = BigDecimal.valueOf(existingNum);				// BigDecimal version of the existing number
@@ -282,11 +214,11 @@ public class GameScreenController {
 	}
 
 	/**
-	 * Swtiches the sign of the existing number
+	 * Switches the sign of the existing number
 	 * @param existingNum the number that exists as the current answer
 	 * @return the opposite of what was the existing number
 	 */
-	private double posNegSwitch(double existingNum) {
+	private static double posNegSwitch(double existingNum) {
 		return -existingNum;
 	}
 
@@ -294,40 +226,12 @@ public class GameScreenController {
 	 * Ends the game, and adjusts view for an end game screen
 	 */
 	private void endGame() {
-		questionField.setText("Score: " + score);
+		currentGame.getGameScreenView().displayQuestion(Calculations.genQuestion(currentGame.getCurrentLevel()));
 
-		submitAns.setDisable(true);
-		submitAns.setVisible(false);
-
-		playAgainButton.setVisible(true);
-		playAgainButton.setDisable(false);
+		currentGame.getGameScreenView().endGameView();
+		
 		score = 0;
 	}
 
-	/**
-	 * Reruns the game by going back to the level selector
-	 */
-	@FXML
-	public void playGameAgain() {
-		setupScreen("LevelSelector.fxml");
-	}
-
-	/**
-	 * Sets up view to go back to the level selector
-	 * @param nameFileGUI name of the GUI file
-	 */
-	private void setupScreen(String nameFileGUI) {
-		FXMLLoader root = new FXMLLoader(getClass().getResource(nameFileGUI));
-		Parent parent;
-		try {
-			parent = root.load();
-			Stage stage = (Stage) questionField.getScene().getWindow();
-			stage.setOpacity(1);
-			stage.setScene(new Scene(parent, 1000, 800));
-			stage.setResizable(false);
-			stage.show();		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 }
