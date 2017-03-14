@@ -63,7 +63,7 @@ public class Fraction {
 	 */
 	public Fraction addFraction(Fraction otherFrac) {
 		
-		int lcm = Calculations.leastCommonMultiple(this.getDenominator(), otherFrac.getDenominator());
+		int lcm = leastCommonMultiple(this.getDenominator(), otherFrac.getDenominator());
 		
 		int newNumerator = this.getNumerator() * lcm / this.getDenominator() + otherFrac.getNumerator() * lcm / otherFrac.getDenominator();
 		
@@ -76,7 +76,7 @@ public class Fraction {
 	 * @return a fraction that is the difference of both
 	 */
 	public Fraction subtractFraction(Fraction otherFrac) {
-		int lcm = Calculations.leastCommonMultiple(this.getDenominator(), otherFrac.getDenominator());
+		int lcm = leastCommonMultiple(this.getDenominator(), otherFrac.getDenominator());
 		
 		int newNumerator = this.getNumerator() * lcm / this.getDenominator() - otherFrac.getNumerator() * lcm / otherFrac.getDenominator();		
 		
@@ -112,6 +112,35 @@ public class Fraction {
 		
 		// constructs and returns question string
 		return new Fraction(num1, num2).formatToString() + " " + operationChar + " " + new Fraction(num3, num4).formatToString();
+	}
+	
+	/**
+	 * Calculates the GCD
+	 * @param first first number to be calculated
+	 * @param second second number to be calculated
+	 * @return the GCD of the two numbers
+	 */
+	private static int greatestCommonDivisor(int first, int second) {
+		int large = (first > second) ? first : second;	// determine what is larger
+		int small = (first < second) ? first : second;	// determine what is smaller
+		int remainder = large % small; 					// gets the remainder
+
+		// loops until remainder is 0, and then returns smallest
+		if(remainder == 0){
+			return small;
+		}else{
+			return greatestCommonDivisor(small, remainder);
+		}
+	}
+
+	/**
+	 * Calculates the LCM
+	 * @param first first number to be calculated
+	 * @param second second number to be calculated
+	 * @return the LCM of the two numbers
+	 */
+	private static int leastCommonMultiple(int first, int second) {
+		return (first/greatestCommonDivisor(first, second)) * second;
 	}
 	
 	/**
