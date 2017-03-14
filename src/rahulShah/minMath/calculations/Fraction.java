@@ -28,7 +28,7 @@ public class Fraction {
 	 * Converts the fraction to a string
 	 * @return string version of fraction
 	 */
-	public String formatToString() {
+	public String toString() {
 		String numString = "" + this.getNumerator();
 		String denString = "" + this.getDenominator();
 		
@@ -111,7 +111,7 @@ public class Fraction {
 		}while (num4 == 0);
 		
 		// constructs and returns question string
-		return new Fraction(num1, num2).formatToString() + " " + operationChar + " " + new Fraction(num3, num4).formatToString();
+		return new Fraction(num1, num2).toString() + " " + operationChar + " " + new Fraction(num3, num4).toString();
 	}
 	
 	/**
