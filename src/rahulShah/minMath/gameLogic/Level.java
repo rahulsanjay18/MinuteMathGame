@@ -1,4 +1,4 @@
-package gameLogic;
+package rahulShah.minMath.gameLogic;
 
 public class Level {
 	

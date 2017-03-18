@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rahulShah.minMath.view.RulesScreenController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <Label layoutX="167.0" layoutY="132.0" prefHeight="110.0" prefWidth="717.0" text="Welcome to Minute Math! Here, you have 60 seconds to answer arithmetic questions to boost your ability to do math quickly! Each category has different levels, ranging from easy, to almost impossibly hard, but the point is to build up your mathematical skill to do problems faster. " wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="167.0" layoutY="274.0" prefHeight="36.0" prefWidth="206.0" text="A  few notes:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="167.0" layoutY="310.0" prefHeight="20.0" prefWidth="415.0" text="All answers, except for the Fraction categories, are integers." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="167.0" layoutY="335.0" prefHeight="20.0" prefWidth="516.0" text="Fractions are to be written as (numerator)/(denominator), even if the denominator is 1." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="444.0" layoutY="22.0" text="Rules">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="754.0" text="NOTE: This is in early alpha stage, if a final version were to come out, it would be include more features." />
+            <Label alignment="TOP_LEFT" layoutX="167.0" layoutY="362.0" prefHeight="20.0" prefWidth="516.0" text="All decimals must be rounded to 3 places." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="410.0" layoutY="606.0" mnemonicParsing="false" onAction="#goBack" text="BACK">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Button>
+            <Label alignment="TOP_LEFT" layoutX="167.0" layoutY="390.0" prefHeight="20.0" prefWidth="516.0" text="Use the mouse to control the game." wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

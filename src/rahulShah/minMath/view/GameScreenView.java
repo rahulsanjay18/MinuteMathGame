@@ -1,6 +1,5 @@
 package rahulShah.minMath.view;
 
-import gameLogic.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import rahulShah.minMath.gameLogic.Game;
 
 public class GameScreenView {
 	@FXML
@@ -52,6 +52,18 @@ public class GameScreenView {
 	private Button clearButton;
 	@FXML
 	private Button playAgainButton;
+	@FXML
+	private Label statusBar;
+	@FXML
+	private Button plusSignButton;
+	@FXML
+	private Button minusSignButton;
+	@FXML
+	private Button radicalButton;
+	@FXML
+	private Button openParenthetical;
+	@FXML
+	private Button closeParenthetical;
 	
 	@FXML
 	public void numberButtonPressed(ActionEvent event){
@@ -62,6 +74,7 @@ public class GameScreenView {
 	public void initialize(Game currentGame) {
 		playAgainButton.setVisible(false);
 		playAgainButton.setDisable(true);
+		statusBar.setText("");
 		GameScreenController controller = new GameScreenController();
 		controller.initialize(currentGame);
 	}
@@ -97,6 +110,10 @@ public class GameScreenView {
 
 		playAgainButton.setVisible(true);
 		playAgainButton.setDisable(false);
+	}
+	
+	public void updateStatBar(String msg) {
+		statusBar.setText(msg);
 	}
 	
 	/**

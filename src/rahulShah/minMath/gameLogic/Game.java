@@ -1,4 +1,4 @@
-package gameLogic;
+package rahulShah.minMath.gameLogic;
 
 import rahulShah.minMath.view.GameScreenView;
 
@@ -29,5 +29,10 @@ public class Game {
 		this.currentLevel = level;
 	}
 	
+	public Game (GameScreenView g){
+		this.gameScreenView = g;
+		
+		this.currentLevel = new Level(0, "Tester");
+	}
 	
 }

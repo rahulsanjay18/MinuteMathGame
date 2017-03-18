@@ -9,10 +9,10 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import gameLogic.Game;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import rahulShah.minMath.calculations.Calculations;
+import rahulShah.minMath.gameLogic.Game;
 
 public class GameScreenController {
 
@@ -73,6 +73,7 @@ public class GameScreenController {
 		// Executes the game
 		currentGame.getGameScreenView().displayQuestion(Calculations.genQuestion(currentGame.getCurrentLevel()));
 		timer.schedule(timerTask, 0, 1000);
+		
 	}
 
 	public static void processInput(String buttonName){
@@ -165,7 +166,11 @@ public class GameScreenController {
 			score++;
 			currentGame.getGameScreenView().updateScore(score);
 			currentGame.getGameScreenView().clearAnswerField();
+			currentGame.getGameScreenView().updateStatBar("Correct!");
 			currentGame.getGameScreenView().displayQuestion(Calculations.genQuestion(currentGame.getCurrentLevel()));
+		}else{
+			currentGame.getGameScreenView().clearAnswerField();
+			currentGame.getGameScreenView().updateStatBar("Wrong. Try Again");
 		}
 	}
 

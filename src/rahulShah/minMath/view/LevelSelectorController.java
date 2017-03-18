@@ -2,8 +2,6 @@ package rahulShah.minMath.view;
 
 import java.io.IOException;
 
-import gameLogic.Game;
-import gameLogic.Level;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
+import rahulShah.minMath.gameLogic.Game;
+import rahulShah.minMath.gameLogic.Level;
 
 public class LevelSelectorController {
 

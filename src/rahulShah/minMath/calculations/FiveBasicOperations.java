@@ -3,7 +3,7 @@ package rahulShah.minMath.calculations;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import gameLogic.Level;
+import rahulShah.minMath.gameLogic.Level;
 
 public class FiveBasicOperations {
 	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rahulShah.minMath.view.HomeScreenController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="1000.0">
+         <children>
+            <Label layoutX="329.0" layoutY="14.0" text="Minute Math">
+               <font>
+                  <Font size="60.0" />
+               </font>
+            </Label>
+            <Button fx:id="playButton" layoutX="425.0" layoutY="218.0" mnemonicParsing="false" onAction="#gameStart" text="Play" textAlignment="CENTER">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Button>
+            <Button fx:id="rulesButton" layoutX="412.0" layoutY="360.0" mnemonicParsing="false" onAction="#changeToRulesScreen" text="Rules" textAlignment="CENTER">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
