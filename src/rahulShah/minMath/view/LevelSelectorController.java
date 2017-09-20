@@ -32,6 +32,8 @@ public class LevelSelectorController {
 	@FXML
 	public Button selectSubtractFraction;
 	@FXML
+	public Button selectTrig;
+	@FXML
 	public Button backButton;
 	@FXML
 	public Button playGame;
@@ -53,6 +55,7 @@ public class LevelSelectorController {
 		nameButtonSelected = buttonSelected.getText();
 
 		chooseLevelLabel.setText("You chose: " + nameButtonSelected);
+		 playGame.setDisable(false);
 	}
 	
 	/**
@@ -82,6 +85,7 @@ public class LevelSelectorController {
 	public void startTheGame() {
 		try {
 			FXMLLoader root = new FXMLLoader(getClass().getResource("GameScreen.fxml"));
+
 			Parent parent;
 			parent = root.load();
 			Stage stage = (Stage) playGame.getScene().getWindow();

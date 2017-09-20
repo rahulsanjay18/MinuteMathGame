@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rahulShah.minMath.view.LevelSelectorController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rahulShah.minMath.view.LevelSelectorController">
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="1000.0">
          <children>
@@ -46,7 +46,7 @@
                </font>
             </Button>
             <Slider fx:id="levelSelector" blockIncrement="1.0" layoutX="245.0" layoutY="505.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="0" prefHeight="155.0" prefWidth="512.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-            <Button fx:id="playGame" layoutX="431.0" layoutY="689.0" mnemonicParsing="false" onAction="#startTheGame" text="PLAY!">
+            <Button fx:id="playGame" disable="true" layoutX="431.0" layoutY="689.0" mnemonicParsing="false" onAction="#startTheGame" text="PLAY!">
                <font>
                   <Font size="36.0" />
                </font>
@@ -64,6 +64,11 @@
             <Button fx:id="backButton" layoutX="25.0" layoutY="728.0" mnemonicParsing="false" onAction="#goBack" text="BACK">
                <font>
                   <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="selectTrig" ellipsisString="" layoutX="364.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryButtonSelected" prefHeight="80.0" prefWidth="270.0" text="Trigonometry">
+               <font>
+                  <Font size="30.0" />
                </font>
             </Button>
          </children>

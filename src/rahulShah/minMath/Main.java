@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 
 
 public class Main extends Application {
-	private AnchorPane rootLayout = new AnchorPane();;
+	private AnchorPane rootLayout = new AnchorPane();
 	
 	/**
 	 *  Sets up the initial frame

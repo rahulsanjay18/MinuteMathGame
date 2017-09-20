@@ -111,7 +111,7 @@ public class Fraction {
 		}while (num4 == 0);
 		
 		// constructs and returns question string
-		return new Fraction(num1, num2).toString() + " " + operationChar + " " + new Fraction(num3, num4).toString();
+		return new Fraction(num1, num2).toString() + " " + operationChar + " " + new Fraction(num3, num4).toString() + "=";
 	}
 	
 	/**
@@ -141,6 +141,10 @@ public class Fraction {
 	 */
 	private static int leastCommonMultiple(int first, int second) {
 		return (first/greatestCommonDivisor(first, second)) * second;
+	}
+	
+	public BigDecimal toBigDecimal(){
+		return BigDecimal.valueOf(numerator / denominator);
 	}
 	
 	/**

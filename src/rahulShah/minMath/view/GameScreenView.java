@@ -1,5 +1,6 @@
 package rahulShah.minMath.view;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,8 +52,6 @@ public class GameScreenView {
 	@FXML
 	private Button clearButton;
 	@FXML
-	private Button playAgainButton;
-	@FXML
 	private Label statusBar;
 	@FXML
 	private Button plusSignButton;
@@ -60,6 +59,8 @@ public class GameScreenView {
 	private Button minusSignButton;
 	@FXML
 	private Button radicalButton;
+	@FXML
+	private Button undefinedButton;
 	@FXML
 	private Button openParenthetical;
 	@FXML
@@ -72,10 +73,9 @@ public class GameScreenView {
 	}
 	
 	public void initialize(Game currentGame) {
-		playAgainButton.setVisible(false);
-		playAgainButton.setDisable(true);
 		statusBar.setText("");
 		GameScreenController controller = new GameScreenController();
+		disableControls(currentGame);
 		controller.initialize(currentGame);
 	}
 	
@@ -107,45 +107,38 @@ public class GameScreenView {
 	public void endGameView(){
 		submitAns.setDisable(true);
 		submitAns.setVisible(false);
-
-		playAgainButton.setVisible(true);
-		playAgainButton.setDisable(false);
 	}
 	
 	public void updateStatBar(String msg) {
 		statusBar.setText(msg);
 	}
 	
-	/**
-	 * Reruns the game by going back to the level selector
-	 */
-	@FXML
-	public void playGameAgain() {
-		setupScreen("LevelSelector.fxml");
-	}
-
-	/**
-	 * Sets up view to go back to the level selector
-	 * @param nameFileGUI name of the GUI file
-	 */
-	private void setupScreen(String nameFileGUI) {
-		FXMLLoader root = new FXMLLoader(getClass().getResource(nameFileGUI));
-		Parent parent;
-		try {
-			parent = root.load();
-			Stage stage = (Stage) questionField.getScene().getWindow();
-			stage.setOpacity(1);
-			stage.setScene(new Scene(parent, 1000, 800));
-			stage.setResizable(false);
-			stage.show();		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
-	@FXML
-	public void changeDecPoint(){
-		GameScreenController.flipDecBool();
+	
+	public void disableControls(Game currentGame) {
+		String levelName = currentGame.getCurrentLevel().getLevelName();
+		
+		if(levelName.equals("Addition") || levelName.equals("Subtraction") || 
+		   levelName.equals("Multiplication") || levelName.equals("Division") ||
+		   levelName.equals("Exponents")) {
+			
+			plusSignButton.setDisable(true);
+			minusSignButton.setDisable(true);
+			buttonForwardSlash.setDisable(true);
+			radicalButton.setDisable(true);
+			undefinedButton.setDisable(true);
+			openParenthetical.setDisable(true);
+			closeParenthetical.setDisable(true);
+			
+		}else if (levelName.contains("Fraction")) {
+			plusSignButton.setDisable(true);
+			minusSignButton.setDisable(true);
+			radicalButton.setDisable(true);
+			undefinedButton.setDisable(true);
+			openParenthetical.setDisable(true);
+			closeParenthetical.setDisable(true);
+		}
+		
 	}
 	
 	/**
@@ -154,5 +147,27 @@ public class GameScreenView {
 	@FXML
 	public void submitAnswerForCorrection(){
 		GameScreenController.submitAnswer();
+	}
+	
+	/**
+	 * Reruns the game by going back to the level selector
+	 */
+	public void endGame(Game currentGame) {
+		FXMLLoader root = new FXMLLoader(getClass().getResource("EndGameScreen.fxml"));
+		Parent parent;
+		try {
+			parent = root.load();
+			Stage stage = (Stage) statusBar.getScene().getWindow();
+			stage.setOpacity(1);
+			stage.setScene(new Scene(parent, 1000, 800));
+			EndGameView controller = root.<EndGameView>getController();
+			currentGame.setEndGameView(controller);
+			currentGame.getEndGameView().initialize(currentGame);	// initializes controller by sending the Game object to the GameScreenController
+			
+			stage.setResizable(false);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
