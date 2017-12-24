@@ -1,5 +1,5 @@
 # Browse Other Projects:
-<button href="https://rahulsanjay18.github.io/Calculator/">Calculator</button>
+<a href="https://rahulsanjay18.github.io/Calculator/" class="btn btn-github">Calculator</a>
 
 # Goals:
 * To create a desktop math challenge game
