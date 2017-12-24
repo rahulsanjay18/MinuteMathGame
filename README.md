@@ -1,3 +1,20 @@
-# MinuteMathGame
+# Browse Other Projects:
 
-This entire thing is made in Eclipse, so there might be packages that need to be installed to have it properly run. the only package not already included that was used is JavaFX
+
+# Goals:
+* To create a desktop math challenge game
+* Test people on their mathematical ability in a timed game
+
+# Tasks:
+- [x] Create constants calculator
+    - [x] +,-,x,/
+    - [x] Fractions
+    - [x] Trigonometry
+    - [x] Roundoff error
+- [x] Level Generator
+    - [x] +,-,x,/
+    - [x] Fractions
+    - [x] Trigonometry
+- [x] GUI
+
+
